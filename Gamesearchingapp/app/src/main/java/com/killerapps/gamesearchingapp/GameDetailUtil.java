@@ -31,7 +31,7 @@ public class GameDetailUtil {
         static public GameDetail parseGameDetail(InputStream in) throws IOException, SAXException {
             GameDetailUtil.GameDetailSaxParser parser = new GameDetailSaxParser();
             Xml.parse(in, Xml.Encoding.UTF_8, parser);
-            return parser.gameDetail;
+            return parser.getGameDetail();
         }
         public GameDetail getGameDetail() {
             return gameDetail;
@@ -41,6 +41,7 @@ public class GameDetailUtil {
         @Override
         public void startDocument() throws SAXException {
             super.startDocument();
+            gameDetail = new GameDetail();
             xmlInnerTest = new StringBuilder();
 //            gameArrayList = new ArrayList<>();
 
@@ -50,7 +51,7 @@ public class GameDetailUtil {
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
             super.startElement(uri, localName, qName, attributes);
             if(localName.equals("Data")){
-                gameDetail = new GameDetail();
+
                 // set object attributes
                 // object.setId(attributes.getValue("id");
                 gameDetail.setBaseImgUrl(attributes.getValue("baseImgUrl"));

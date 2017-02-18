@@ -7,6 +7,7 @@ package com.killerapps.gamesearchingapp;/**
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.text.Html;
 import android.util.Log;
 
 import org.xml.sax.SAXException;
@@ -37,6 +38,7 @@ public class GetGameDetailsAsyncTask extends AsyncTask<String, Void, GameDetail>
             con.setRequestMethod("GET");
             con.connect();
             int statusCode = con.getResponseCode();
+            Log.d(TAG, "doInBackground: "+ statusCode);
             if (statusCode == HttpURLConnection.HTTP_OK) {
                 InputStream in = con.getInputStream();
                 return  GameDetailUtil.GameDetailSaxParser.parseGameDetail(in);
