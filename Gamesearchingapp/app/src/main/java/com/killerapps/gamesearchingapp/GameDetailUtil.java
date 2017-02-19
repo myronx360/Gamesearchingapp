@@ -54,13 +54,13 @@ public class GameDetailUtil {
 
                 // set object attributes
                 // object.setId(attributes.getValue("id");
-                gameDetail.setBaseImgUrl(attributes.getValue("baseImgUrl"));
-                gameDetail.setGameTitle(attributes.getValue("GameTitle"));
-                gameDetail.setOverview(attributes.getValue("Overview"));
-                gameDetail.addGenre(attributes.getValue("genre"));
-                gameDetail.setPublisher(attributes.getValue("Publisher"));
-                gameDetail.addSimilarGames(attributes.getValue("Similar"));
-                Log.d(LOG, "set Att");
+//                gameDetail.setBaseImgUrl(attributes.getValue("baseImgUrl"));
+//                gameDetail.setGameTitle(attributes.getValue("GameTitle"));
+//                gameDetail.setOverview(attributes.getValue("Overview"));
+//                gameDetail.addGenre(attributes.getValue("genre"));
+//                gameDetail.setPublisher(attributes.getValue("Publisher"));
+//                gameDetail.addSimilarGames(attributes.getValue("Similar"));
+//                Log.d(LOG, "set Att" + attributes.getValue("baseImgUrl") +", " + attributes.getValue("GameTitle"));
 //                Log.d(LOG, news.getTitle());
             }
         }
@@ -77,9 +77,9 @@ public class GameDetailUtil {
             }else if(localName.equals("Overview")) {
 
                 gameDetail.setOverview(xmlInnerTest.toString());
-            }else if(localName.equals("genre")){
+//            } else if(localName.equals("genre")){
                 //TODO: Handle multiple Genres
-                gameDetail.addGenre(xmlInnerTest.toString());
+             //   gameDetail.addGenre(xmlInnerTest.toString());
             }else if(localName.equals("Publisher")){
                 gameDetail.setPublisher(xmlInnerTest.toString());
             }//TODO: Handle adding similar Games

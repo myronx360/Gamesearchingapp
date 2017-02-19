@@ -70,7 +70,7 @@ public class GameListUtil {
                 //object.setName(xmlInnerTest.toString().trim());
                 if(xmlInnerTest.toString() != null) {
                     Log.d(TAG, xmlInnerTest.toString());
-                    gameList.setId(xmlInnerTest.toString());
+                    gameList.setId(xmlInnerTest.toString().trim());
                 }else{
                     Log.d(TAG, "set id == null ");
                 }
@@ -78,7 +78,7 @@ public class GameListUtil {
 
                 gameList.setGameTitle(xmlInnerTest.toString());
             }else if(localName.equals("ReleaseDate")){
-                if(xmlInnerTest.toString().isEmpty()){
+                if(xmlInnerTest.toString().trim().isEmpty()){
                     gameList.setReleaseDate("??/??/????");
                 }else {
                     gameList.setReleaseDate(xmlInnerTest.toString());

@@ -1,6 +1,7 @@
 package com.killerapps.gamesearchingapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,9 +21,10 @@ import java.util.ArrayList;
 /**
  * HW # 5
  * MainActivity.java
- * Created By: Myron Williams on 2/18/2017.
+ * Created By: Myron Williams && Brandon Williams on 2/18/2017.
  */
 public class MainActivity extends AppCompatActivity implements GetGameListAsyncTask.IData, GetGameDetailsAsyncTask.IData{
+
     final String TAG = "Debug";
     private final String GET_GAME_URL = "http://thegamesdb.net/api/GetGamesList.php?name=";
     private String gameName;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements GetGameListAsyncT
     private String selectedGameId;
     private final String GET_GAME_DETAILS = "http://thegamesdb.net/api/GetGame.php?id=";
     private GameDetail currentGameDetail;
+    public final static String KEY_DETAIL = "GAMEDETAIL";
+    public static final String KEY_IMG = "GAMEIMG";
+    private Bitmap gameImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +115,9 @@ public class MainActivity extends AppCompatActivity implements GetGameListAsyncT
 
     public void goButton(View view){
         setUpProgressSpinner();
-//        new GetGameListAsyncTask(MainActivity.this).cancel(true);
-        new GetGameDetailsAsyncTask(MainActivity.this).execute(concatURL(GET_GAME_DETAILS, selectedGameId));
+        Log.d(TAG, "goButton: " + GET_GAME_DETAILS.concat(selectedGameId.toString()));
+        Log.d(TAG, "goButton: " + GET_GAME_DETAILS.concat(selectedGameId));
+        new GetGameDetailsAsyncTask(MainActivity.this).execute(GET_GAME_DETAILS.concat(selectedGameId.toString()));
     }
 
 
@@ -133,20 +139,23 @@ public class MainActivity extends AppCompatActivity implements GetGameListAsyncT
     public void setupGameData(GameDetail gameDetail) {
 
         currentGameDetail = gameDetail;
-
+        new GetImage(currentGameDetail.getBaseImgUrl(),MainActivity.this);
         progressBar.setVisibility(View.GONE);
         toggleDisplayScrollView();
-        //TODO: GOTO next activity
         Log.d(TAG, "setupGameData: GOTO NEXT ACTIVITY");
+        Intent intent = new Intent(MainActivity.this, GameDetailsActivity.class);
+        intent.putExtra(KEY_DETAIL, currentGameDetail);
+        intent.putExtra(KEY_IMG, gameImg);
+        startActivity(intent);
     }
 
     @Override
     public void setupGameImage(Bitmap image) {
-
+        gameImg = image;
     }
 
     @Override
     public Context getContext() {
-        return null;
+        return this;
     }
 }

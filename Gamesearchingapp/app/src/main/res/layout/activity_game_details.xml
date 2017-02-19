@@ -18,7 +18,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/layoutGameDetail">
 
         <LinearLayout
             android:orientation="vertical"
@@ -54,7 +55,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical" />
+                    android:orientation="vertical"
+                    android:id="@+id/layoutScrollGameDetail" />
             </ScrollView>
 
             <TextView

@@ -21,8 +21,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * HW # In_Class # 
- * GetGameDetailsAsyncTask.java
+ * HW # 5
+ * * GetGameDetailsAsyncTask.java
  * Created By: Myron Williams on 2/18/2017.
  */
 public class GetGameDetailsAsyncTask extends AsyncTask<String, Void, GameDetail> {

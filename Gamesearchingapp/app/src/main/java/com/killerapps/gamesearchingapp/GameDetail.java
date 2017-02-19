@@ -4,6 +4,7 @@ package com.killerapps.gamesearchingapp;/**
  * Created by Myron Williams on 2/18/2017.
  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * GameDetail.java
  * Created By: Myron Williams on 2/18/2017.
  */
-public class GameDetail {
+public class GameDetail implements Serializable{
     private String baseImgUrl;
     private String gameTitle;
     private String overview;
@@ -64,6 +65,7 @@ public class GameDetail {
     }
 
     public void addGenre(String g){
+
         genre.add(g);
     }
 
